@@ -10,5 +10,5 @@ class User < ApplicationRecord
 
          def full_name
            profile.full_name
-         end  
+         end
 end
