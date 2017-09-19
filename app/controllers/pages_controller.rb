@@ -23,8 +23,8 @@ class PagesController < ApplicationController
       @student.save
       @profile.save
 
-      # @add = Pair.new(profile_id: @profile.id, match: @student.id)
-      # @add.save
+      @add = Pair.new(profile_id: @profile.id, match: @student.id)
+      @add.save
 
   end
 
