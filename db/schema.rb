@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170919154329) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,12 +22,26 @@ ActiveRecord::Schema.define(version: 20170919154329) do
     t.datetime "updated_at", null: false
   end
 
+
+  create_table "matches", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active"
+    t.integer "student_id"
+
+    t.string "pairs"
+  end
+
+
   create_table "pairs", force: :cascade do |t|
     t.bigint "profile_id"
     t.integer "match"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_pairs_on_profile_id"
+
+
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -36,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170919154329) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
