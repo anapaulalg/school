@@ -3,3 +3,9 @@
 <h3> Your pair today (<%= Time.current.to_date %>) is: </h3>
 
 <%= link_to "Choose another pair", root_path, class: "btn btn-info" %>
+
+
+
+<% @profiles.each do |profile| %>
+  <p><%= profile.first_name %></p>
+<% end %>

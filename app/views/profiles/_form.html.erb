@@ -15,7 +15,7 @@
 
   <div class="form-group">
     <label>Occupation</label>
-    <%= f.text_field :occupation, placeholder: "Student or Admin", class: "form-control" %>
+    <%= f.select :occupation, [['Admin'],['Student']] %>
   </div>
 
   <div class="actions">

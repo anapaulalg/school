@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @profile = current_user.profile
     @student_id = Random.rand(1..@students)
     # @student = Profile.where(student_id: @student_id).first
+    @profiles = Profile.all
   end
 
 
