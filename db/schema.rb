@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170919091124) do
     t.datetime "updated_at", null: false
     t.boolean "active"
     t.integer "student_id"
+
     t.string "pairs"
   end
 
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170919091124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_pairs_on_profile_id"
+
   end
 
   create_table "profiles", force: :cascade do |t|
