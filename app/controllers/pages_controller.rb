@@ -13,11 +13,11 @@ class PagesController < ApplicationController
       @pair = @student_id.sample(1)
       @student = Profile.where(id: @pair).first
 
-      # @student.active = false
-      # @profile.active = false
-      #
-      # @student.save
-      # @profile.save
+      @student.active = false
+      @profile.active = false
+
+      @student.save
+      @profile.save
 
       # @add = Pair.new(profile_id: @profile.id, match: @student.id)
       # @add.save
