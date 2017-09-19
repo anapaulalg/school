@@ -1,10 +1,33 @@
 class PagesController < ApplicationController
 
   def home
-    @students = Profile.count
     @profile = current_user.profile
-    @student_id = Random.rand(1..@students)
-    # @student = Profile.where(student_id: @student_id).first
+
+    @student_id = []
+    @profiles = Profile.where(active: true)
+
+    @profiles.each do |profile|
+       @student_id << profile.id
+    end
+
+      @pair = @student_id.sample(1)
+      @student = Profile.where(id: @pair).first
+
+      # @student.active = false
+      # @profile.active = false
+      #
+      # @student.save
+      # @profile.save
+
+      # @add = Pair.new(profile_id: @profile.id, match: @student.id)
+      # @add.save
+
+  end
+
+  def shown
+
+
+
   end
 
 

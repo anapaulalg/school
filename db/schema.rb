@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918133803) do
+ActiveRecord::Schema.define(version: 20170919091124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 20170918133803) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active"
+    t.integer "student_id"
+    t.string "pairs"
+  end
+
+  create_table "pairs", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.integer "match"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_pairs_on_profile_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -28,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170918133803) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -48,5 +66,6 @@ ActiveRecord::Schema.define(version: 20170918133803) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pairs", "profiles"
   add_foreign_key "profiles", "users"
 end
