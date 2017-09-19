@@ -3,6 +3,10 @@ class PagesController < ApplicationController
   def home
     @profile = current_user.profile
 
+    @student_id = Random.rand(1..@students)
+    # @student = Profile.where(student_id: @student_id).first
+    @profiles = Profile.all
+
     @student_id = []
     @profiles = Profile.where(active: true)
 
@@ -25,7 +29,6 @@ class PagesController < ApplicationController
   end
 
   def shown
-
 
 
   end
