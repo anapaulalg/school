@@ -1,5 +1,5 @@
-User.destroy_all
 Profile.destroy_all
+User.destroy_all
 
 user1 = User.create!( { email: 'hank@school.com', password: '123456'})
 user2 = User.create!( { email: 'erikk@school.com', password: '123456'})
