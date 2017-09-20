@@ -1,0 +1,32 @@
+<h1> List of Users </h1>
+
+<table style="width:50%">
+  <tr>
+    <th>User's email</th>
+    <th>Occupation</th>
+  </tr>
+
+  <tr>
+
+      <% @users.each do |user| %>
+        <td><%= user.email %></td>
+      <% end %>
+
+  </tr>
+
+  <tr>
+
+      <% @profiles.each do |profile| %>
+        <td><%= profile.occupation %></td>
+      <% end %>
+
+  </tr>
+</table>
+
+
+<%= form_for @profile do |f| %>
+<div class="form-group">
+  <label>Occupation</label>
+  <%= f.select :occupation, [['Admin'],['Student']] %>
+</div>
+<% end %>
