@@ -1,2 +1,2 @@
-class Pair < ActiveRecord::Base
+class Pair < ApplicationRecord
 end
