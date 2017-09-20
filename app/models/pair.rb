@@ -1,3 +1,2 @@
-class Pair < ApplicationRecord
-  belongs_to :profile
+class Pair < ActiveRecord::Base
 end
