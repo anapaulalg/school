@@ -1,0 +1,6 @@
+<h2> Welcome back to Our School, Admin <%= @profile.first_name unless !@profile %>!</h2>
+
+<h3> The pairs today (<%= Time.current.to_date %>) are: </h3>
+<% @profiles.each do |profile| %>
+  <p><%= profile.first_name %></p>
+<% end %>
