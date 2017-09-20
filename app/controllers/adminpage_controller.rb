@@ -5,4 +5,9 @@ class AdminpageController < ApplicationController
     @profiles = Profile.all
   end
 
+  def show
+    @profile = current_user.profile
+    @profiles = Profile.all
+    @users = User.all
+  end
 end
