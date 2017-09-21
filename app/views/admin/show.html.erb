@@ -1,3 +1,10 @@
+<style>
+body {
+background: url('http://res.cloudinary.com/djxmmaqyo/image/upload/v1505987719/white-abstract-wallpaper_lddcyy.jpg') no-repeat;
+background-size: cover;
+}
+</style>
+
 <h1> List of Users </h1>
 
 <table class="table table-striped">
@@ -34,7 +41,7 @@
             <%= f.select :occupation, [['admin'],['student']], {}, {:class => "form-control"}  %>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-success" type="submit">Save</button>
           </div>
         <% end %>
       </td>
