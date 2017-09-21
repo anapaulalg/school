@@ -1,3 +1,10 @@
+<style>
+body {
+background: url('http://res.cloudinary.com/djxmmaqyo/image/upload/v1505981648/bigschoolpic_gynsys.jpg') no-repeat;
+background-size: cover;
+}
+</style>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3 text-center">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -24,7 +31,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Save", class: "btn btn-primary" %>
+        <%= f.submit "Save", class: "btn btn-success" %>
       </div>
     <% end %>
   </div>
