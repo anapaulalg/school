@@ -1,0 +1,43 @@
+<h1> List of Users </h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>User's email</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Occupation</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+
+      <td>
+        <%= form_for user.profile do |f| %>
+          <div class="col-md-4">
+            <%= f.text_field :first_name %>
+          </div>
+        <% end %>
+      </td>
+
+      <td>
+        <%= form_for user.profile do |f| %>
+          <div class="col-md-4">
+            <%= f.text_field :last_name %>
+          </div>
+        <% end %>
+      </td>
+
+      <td>
+        <%= form_for user.profile do |f| %>
+          <div class="col-md-8">
+            <%= f.select :occupation, [['admin'],['student']], {}, {:class => "form-control"}  %>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-primary" type="submit">Save</button>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

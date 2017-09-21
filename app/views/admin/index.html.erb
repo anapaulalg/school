@@ -1,0 +1,30 @@
+<h2> Welcome back to Our School, Admin <%= @profile.first_name unless !@profile %>!</h2>
+
+<button type="button" class="btn btn-danger"> List of Users </button>
+<br>
+<br>
+
+<h3> The pairs today (<%= Time.current.to_date %>) are: </h3>
+<% @profiles.each do |profile| %>
+  <% if profile.occupation == "student" %>
+  <p><%= profile.first_name %></p>
+  <% end %>
+<% end %>
+
+<br>
+<br>
+
+<h4> Pairs from yesterday: </h4>
+<button type="button" class="btn btn-primary"> <%= 1.day.ago.to_date %> </button>
+<br>
+<br>
+
+<h4> Pairs from 2 days ago: </h4>
+<button type="button" class="btn btn-primary"> <%= 2.day.ago.to_date %> </button>
+<br>
+<br>
+
+<h4> Pairs from 3 days ago: </h4>
+<button type="button" class="btn btn-primary"> <%= 3.day.ago.to_date %> </button>
+<br>
+<br>

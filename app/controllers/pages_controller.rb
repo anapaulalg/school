@@ -28,7 +28,6 @@ class PagesController < ApplicationController
     end
       #If current user and match already exist
     @student = Profile.where(id: @test.pair_user_id).first unless !@test
-
   end
 
 
