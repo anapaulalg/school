@@ -1,4 +1,4 @@
-class AdminpageController < ApplicationController
+class AdminController < ApplicationController
 
   def index
     @profile = current_user.profile

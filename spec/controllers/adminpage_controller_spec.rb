@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe AdminpageController, type: :controller do
+RSpec.describe AdminController, type: :controller do
 
 end
