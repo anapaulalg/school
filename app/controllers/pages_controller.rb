@@ -1,54 +1,33 @@
 class PagesController < ApplicationController
 
-
   def home
-
-    # @profile = current_user.profile
-    # @profile.active = false
-    # @profile.save
-    #
-    # @student_id = []
-    # @profiles = Profile.where(active: true)
-    # @profiles.each do |profile|
-    #    @student_id << profile.id
-    # end
-    #
-    #   @pair = @student_id.sample(1)
-    #   @student = Profile.where(id: @pair).first
-    #
-    #   @student.active = false
-    #
-    #
-    #   @student.save
-    #
-    #
-    #   @add = Pair.new(profile_id: @profile.id, match: @student.id)
-    #   @add.save
-
     @profile = current_user.profile
-
-    @student_id = Random.rand(1..@students)
-    # @student = Profile.where(student_id: @student_id).first
-    @profiles = Profile.all
-
     @student_id = []
-    @profiles = Profile.where(active: true)
 
+    @profile.active = false
+    @profile.save
+
+    @profiles = Profile.where(active: true)
     @profiles.each do |profile|
        @student_id << profile.id
     end
 
-      @pair = @student_id.sample(1)
-      @student = Profile.where(id: @pair).first
+    @current_time = Time.now.strftime("%Y/%m/%d")
+    @pair_id = @student_id.sample(1)
+    @student = Profile.where(id: @pair_id).first
+    @pairs = Pair.where(user_id: @profile.id, pair_user_id: @student.id).first unless !@student
+    @test = Pair.where(user_id: @profile.id, pair_at: @current_time).first
 
-      @student.active = false
-      @profile.active = false
-
-      @student.save
-      @profile.save
-
-      @add = Pair.new(profile_id: @profile.id, match: @student.id)
-      @add.save
+    if(!@pairs && !@test)
+        @student.active = false
+        @student.save
+        @add = Pair.new(user_id: @profile.id, pair_user_id: @student.id, pair_at: Time.now.strftime("%Y/%m/%d"))
+        @add.save
+        @add = Pair.new(user_id: @student.id, pair_user_id: @profile.id, pair_at: Time.now.strftime("%Y/%m/%d"))
+        @add.save
+    end
+      #If current user and match already exist
+    @student = Profile.where(id: @test.pair_user_id).first unless !@test
 
   end
 
