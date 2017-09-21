@@ -5,8 +5,7 @@ background-size: cover;
 }
 </style>
 
-<h2> Welcome back to Our School <%= @profile.first_name unless !@profile %>!!</h2>
-
+<h2> Welcome back to Our School, <%= @profile.first_name unless !@profile %>!!</h2>
 
   <h3> Your pair today (<%= Time.current.to_date %>) is: <%= @student.first_name %></h3>
 
@@ -18,3 +17,25 @@ background-size: cover;
       </tr>
     <% end %>
   </table>
+
+  <br><br>
+
+  <h4> Your pair from yesterday: </h4>
+  <button type="button" class="btn btn-success"> <%= 1.day.ago.to_date %> </button>
+  <br><br>
+
+  <h4> Your pair from 2 days ago: </h4>
+  <button type="button" class="btn btn-success"> <%= 2.day.ago.to_date %> </button>
+  <br><br>
+
+  <h4> Your pair from 3 days ago: </h4>
+  <button type="button" class="btn btn-success"> <%= 3.day.ago.to_date %> </button>
+  <br><br>
+
+  <h4> Your pair from 4 days ago: </h4>
+  <button type="button" class="btn btn-success"> <%= 4.day.ago.to_date %> </button>
+  <br><br>
+
+  <h4> Your pair from 5 days ago: </h4>
+  <button type="button" class="btn btn-success"> <%= 5.day.ago.to_date %> </button>
+  <br><br>

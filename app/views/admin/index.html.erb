@@ -9,12 +9,13 @@ background-size: cover;
 
 <br>
 
-<p> If you want to change the status of any student or admin, go to the list of Users. </p>
+<p> If you want to change the status of any student or admin, click in the list of Users. </p>
 <div>
    <a href="http://localhost:3000/admin/users" class="btn btn-success" role="button">List of Users</a>
 </div>
 
 <br><br>
+
 
 <h3> The pairs today (<%= Time.current.to_date %>) are: </h3>
 <% @profiles.each do |profile| %>
@@ -26,16 +27,21 @@ background-size: cover;
 <br><br>
 
 <h4> Pairs from yesterday: </h4>
-<button type="button" class="btn btn-primary"> <%= 1.day.ago.to_date %> </button>
-<br>
-<br>
+<button type="button" class="btn btn-success"> <%= 1.day.ago.to_date %> </button>
+<br><br>
 
 <h4> Pairs from 2 days ago: </h4>
-<button type="button" class="btn btn-primary"> <%= 2.day.ago.to_date %> </button>
-<br>
-<br>
+<button type="button" class="btn btn-success"> <%= 2.day.ago.to_date %> </button>
+<br><br>
 
 <h4> Pairs from 3 days ago: </h4>
-<button type="button" class="btn btn-primary"> <%= 3.day.ago.to_date %> </button>
-<br>
-<br>
+<button type="button" class="btn btn-success"> <%= 3.day.ago.to_date %> </button>
+<br><br>
+
+<h4> Pairs from 4 days ago: </h4>
+<button type="button" class="btn btn-success"> <%= 4.day.ago.to_date %> </button>
+<br><br>
+
+<h4> Pairs from 5 days ago: </h4>
+<button type="button" class="btn btn-success"> <%= 5.day.ago.to_date %> </button>
+<br><br>
