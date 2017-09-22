@@ -7,6 +7,10 @@ class AdminController < ApplicationController
 
     @profile = current_user.profile
     @profiles = Profile.all
+
+    @pair1 = Pair.where(pair_at: Time.now.strftime("%Y-%m-%d")).pluck(:user_id).to_a
+    @pair2 = Pair.where(pair_at: Time.now.strftime("%Y-%m-%d")).pluck(:pair_user_id).to_a
+
   end
 
   def show
