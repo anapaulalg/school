@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @count_rows = Profile.where(occupation: "student").count
     @check = Pair.count
     @current_date = Time.now
+
     @past_days = Pair.where(user_id: @profile.id).or(Pair.where(pair_user_id: @profile.id)).where("pair_at < ?", @current_date.strftime("%Y-%m-%d"))
 
 
@@ -28,7 +29,8 @@ class PagesController < ApplicationController
         @pairs_per_round.times do |pair|
           @pair1 = @students[pair]
           @pair2 = @students.reverse[pair]
-          Pair.new(user_id: @pair1, pair_user_id: @pair2, pair_at: (@current_date + round.days).strftime("%Y-%m-%d")).save
+          @test = round - 1
+          Pair.new(user_id: @pair1, pair_user_id: @pair2, pair_at: (@current_date + @test.days).strftime("%Y-%m-%d")).save
         end
         @students = @students.rotate(-1)
 

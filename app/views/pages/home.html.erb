@@ -3,7 +3,7 @@
 <% if @student.nil? %>
 <h3> Sorry, your have no pair today (<%= Time.current.to_date %>), all students are already assigned!</h3>
 <% else %>
-<h3> Your pair today (<%= Time.current.to_date %>) is: <%= @student.first_name %></h3>
+<h3> Your pair today (<%= @current_date.strftime("%Y-%m-%d") %>) is: <%= @student.first_name %></h3>
 <% end %>
 <br>
 
@@ -32,12 +32,16 @@
     <% if @check > 0 && !@past_days.blank? %>
       <table class="table table-striped">
         <tr>
-          <th>Pair Name</th>
-          <th>Pair At</th>
+          <th>Student 1</th>
+          <th>Student 2</th>
+          <th>Date</th>
         </tr>
 
     <% @past_days.each do |pair| %>
           <tr>
+            <td>
+              <%= @profile.first_name %>
+            </td>
             <td>
               <%=
                 if pair.pair_user_id != @profile.id
@@ -48,7 +52,7 @@
               %>
             </td>
             <td>
-              <%= pair.pair_at %>
+              <%= pair.pair_at.strftime("%Y-%m-%d") %>
             </td>
           </tr>
 
