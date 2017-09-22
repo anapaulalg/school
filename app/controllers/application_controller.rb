@@ -17,10 +17,6 @@ class ApplicationController < ActionController::Base
           student.save
         end
       end
-
-
     end
   end
-
-
 end
