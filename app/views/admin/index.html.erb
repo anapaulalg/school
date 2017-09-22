@@ -9,13 +9,80 @@
 
 <br><br>
 
+<div class="panel panel-success">
+  <div class="panel-heading">
+    All the students
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
 
-<h3> The pairs today (<%= Time.current.to_date %>) are: </h3>
-<table>
-<% @pair1.count.times do |i| %>
-  <tr>
-    <td><%= Profile.find(@pair1[i]).first_name %></td>
-    <td><%= Profile.find(@pair2[i]).first_name %></td>
-  </tr>
-<% end %>
-</table>
+        <% @profiles.each do |profile| %>
+        <tr>
+          <td><%= profile.first_name %></td>
+        </tr>
+        <% end %>
+
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading"> The pairs today (<%= Time.current.to_date %>) are: </div>
+    <div class="panel-body">
+    <table class="table table-striped">
+    <% @pair1.count.times do |i| %>
+      <tr>
+        <td><%= Profile.find(@pair1[i]).first_name %></td>
+        <td><%= Profile.find(@pair2[i]).first_name %></td>
+      </tr>
+    <% end %>
+    </table>
+    </div>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Future pairs
+  </div>
+  <div class="panel-body">
+    <% if @check > 0 && !@past_days.blank? %>
+      <table class="table table-striped">
+        <tr>
+          <th>Student 1</th>
+          <th>Student 2</th>
+          <th>Date</th>
+        </tr>
+
+    <% @past_days.each do |pair| %>
+          <tr>
+            <td>
+              <%=
+                if pair.pair_user_id != @profile.id
+                  Profile.find(pair.pair_user_id).first_name
+                else
+                  Profile.find(pair.user_id).first_name
+                end
+              %>
+            </td>
+            <td>
+              <%=
+                if pair.pair_user_id == @profile.id
+                  Profile.find(pair.pair_user_id).first_name
+                else
+                  Profile.find(pair.user_id).first_name
+                end
+              %>
+            </td>
+            <td>
+              <%= pair.pair_at.strftime("%Y-%m-%d") %>
+            </td>
+          </tr>
+
+
+
+    <% end %>
+    </table>
+    <% end %>
+
+  </div>
+</div>
