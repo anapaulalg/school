@@ -4,11 +4,13 @@ class PagesController < ApplicationController
     if(current_user.profile.occupation == 'admin')
       return redirect_to admin_index_path
     end
-
+    @profiles = Profile.where(occupation: "student")
     @profile = current_user.profile
     @count_rows = Profile.where(occupation: "student").count
     @check = Pair.count
     @current_date = Time.now
+    @past_days = Pair.where(user_id: @profile.id).or(Pair.where(pair_user_id: @profile.id)).where("pair_at < ?", @current_date.strftime("%Y-%m-%d"))
+
 
 
     if @check == 0
