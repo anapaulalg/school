@@ -10,7 +10,7 @@
       <a class="navbar-brand" href="#">
         <img src="" height="28" class="d-inline-block align-right" alt="">
       </a>
-      <%= link_to "School", root_path, class: "navbar-brand" %>
+      <%= link_to "Our School", root_path, class: "navbar-brand" %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -25,8 +25,6 @@
                 <%= current_user.has_profile? ? current_user.full_name : current_user.email  %> <span class="caret"></span></a>
 
               <ul class="dropdown-menu">
-                <li><%= link_to "Your Page" %></li>
-                <li role="separator" class="divider"></li>
 
                 <% if current_user.has_profile? %>
                   <li><%= link_to "Edit Profile", edit_profile_path(current_user.profile) %></li>

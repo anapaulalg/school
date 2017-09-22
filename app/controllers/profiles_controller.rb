@@ -29,10 +29,14 @@ class ProfilesController < ApplicationController
 
   private
     def set_profile
-      @profile = current_user.profile
+      if (current_user.profile.occupation == 'admin')
+        @profile = Profile.find(params[:id])
+      else
+        @profile = current_user.profile
+      end
     end
 
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :occupation)
+      params.require(:profile).permit(:first_name, :last_name, :occupation, :id)
     end
 end
