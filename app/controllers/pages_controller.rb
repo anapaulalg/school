@@ -4,6 +4,8 @@ class PagesController < ApplicationController
     @profile = current_user.profile
     @count_rows = Profile.where(occupation: "student").count
     @check = Pair.count
+    @current_date = Time.now
+
 
     if @check == 0
       @round_amount = @count_rows - 1
@@ -20,7 +22,7 @@ class PagesController < ApplicationController
         @pairs_per_round.times do |pair|
           @pair1 = @students[pair]
           @pair2 = @students.reverse[pair]
-          Pair.new(user_id: @pair1, pair_user_id: @pair2, pair_at: Time.now.strftime("%Y-%m-%d")).save
+          Pair.new(user_id: @pair1, pair_user_id: @pair2, pair_at: (@current_date + round.days).strftime("%Y-%m-%d")).save
         end
         @students = @students.rotate(-1)
 
