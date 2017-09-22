@@ -1,16 +1,62 @@
-<h2> Welcome back to Our School <%#= @profile.first_name unless !@profile %>!!</h2>
+<h2> Welcome back to Our School, <%= @profile.first_name unless !@profile %>!</h2>
+
+<% if @student.nil? %>
+<h3> Sorry, your have no pair today (<%= Time.current.to_date %>), all students are already assigned!</h3>
+<% else %>
+<h3> Your pair today (<%= Time.current.to_date %>) is: <%= @student.first_name %></h3>
+<% end %>
+<br>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    All the students
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+
+        <% @profiles.each do |profile| %>
+        <tr>
+          <td><%= profile.first_name %></td>
+        </tr>
+        <% end %>
+
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Past pairs
+  </div>
+  <div class="panel-body">
+    <% if @check > 0 && !@past_days.blank? %>
+      <table class="table table-striped">
+        <tr>
+          <th>Pair Name</th>
+          <th>Pair At</th>
+        </tr>
+
+    <% @past_days.each do |pair| %>
+          <tr>
+            <td>
+              <%=
+                if pair.pair_user_id != @profile.id
+                  Profile.find(pair.pair_user_id).first_name
+                else
+                  Profile.find(pair.user_id).first_name
+                end
+              %>
+            </td>
+            <td>
+              <%= pair.pair_at %>
+            </td>
+          </tr>
 
 
 
-<%# @profiles.each do |profile| %>
-  <p><%#= profile.first_name %></p>
-<%# end %>
+    <% end %>
+    </table>
+    <% end %>
 
-  <h3> Your pair today (<%= Time.current.to_date %>) is: <%#= @student.first_name %></h3>
-
-
-  <%# @profiles.each do |profile| %>
-    <p><%#= profile.first_name %></p>
-  <%# end %>
-
-  <%= link_to "Choose another pair", root_path, class: "btn btn-info" %>
+  </div>
+</div>

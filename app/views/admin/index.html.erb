@@ -1,0 +1,21 @@
+<h2> Welcome back to Our School, Admin <%= @profile.first_name unless !@profile %>!</h2>
+
+<br>
+
+<p> If you want to change the status of any student or admin, click in the list of Users. </p>
+<div>
+   <a href="/admin/users" class="btn btn-success" role="button">List of Users</a>
+</div>
+
+<br><br>
+
+
+<h3> The pairs today (<%= Time.current.to_date %>) are: </h3>
+<table>
+<% @pair1.count.times do |i| %>
+  <tr>
+    <td><%= Profile.find(@pair1[i]).first_name %></td>
+    <td><%= Profile.find(@pair2[i]).first_name %></td>
+  </tr>
+<% end %>
+</table>

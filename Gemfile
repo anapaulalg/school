@@ -62,5 +62,6 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'devise', '~> 4.2'
 gem 'carrierwave', '0.11.2'
+gem 'cloudinary', '1.2.3'
 gem 'rails_12factor', group: :production
 ruby '2.4.1'

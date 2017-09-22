@@ -1,2 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+table {
+  background-color: white;
+}
+
+body {
+  background: url('http://res.cloudinary.com/djxmmaqyo/image/upload/v1505987719/white-abstract-wallpaper_lddcyy.jpg') no-repeat;
+  background-size: cover;
+}
