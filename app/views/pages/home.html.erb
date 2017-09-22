@@ -1,41 +1,56 @@
-<style>
-body {
-background: url('http://res.cloudinary.com/djxmmaqyo/image/upload/v1505987719/white-abstract-wallpaper_lddcyy.jpg') no-repeat;
-background-size: cover;
-}
-</style>
+<h2> Welcome back to Our School, <%= @profile.first_name unless !@profile %>!</h2>
 
-<h2> Welcome back to Our School, <%= @profile.first_name unless !@profile %>!!</h2>
+<% if @student.nil? %>
+<h3> Sorry, your have no pair today (<%= Time.current.to_date %>), all students are already assigned!</h3>
+<% else %>
+<h3> Your pair today (<%= Time.current.to_date %>) is: <%= @student.first_name %></h3>
+<% end %>
+<br>
 
-  <h3> Your pair today (<%= Time.current.to_date %>) is: <%= @student.first_name unless !@student %></h3>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Unassigned students today
+  </div>
+  <div class="panel-body">
+      <% if @profiles && @profiles.length > 0 %>
+        <ul>
+        <% @profiles.each do |profile| %>
+          <% if profile.id != @student.id %>
+            <li>
+              <%= profile.first_name %> <%= profile.last_name %>
+            </li>
+          <% end %>
+        <% end %>
+        </ul>
+      <% else %>
+        No unassigned students to display
+      <% end %>
+  </div>
+</div>
 
-  <table>
-    <th>Possible pairs</th>
-    <%# @profiles.each do |profile| %>
-      <tr>
-        <td><%#= profile.first_name unless profile.first_name == @student.first_name %></td>
-      </tr>
-    <%# end %>
-  </table>
-
-  <br><br>
-
-  <h4> Your pair from yesterday: </h4>
-  <button type="button" class="btn btn-success"> <%= 1.day.ago.to_date %> </button>
-  <br><br>
-
-  <h4> Your pair from 2 days ago: </h4>
-  <button type="button" class="btn btn-success"> <%= 2.day.ago.to_date %> </button>
-  <br><br>
-
-  <h4> Your pair from 3 days ago: </h4>
-  <button type="button" class="btn btn-success"> <%= 3.day.ago.to_date %> </button>
-  <br><br>
-
-  <h4> Your pair from 4 days ago: </h4>
-  <button type="button" class="btn btn-success"> <%= 4.day.ago.to_date %> </button>
-  <br><br>
-
-  <h4> Your pair from 5 days ago: </h4>
-  <button type="button" class="btn btn-success"> <%= 5.day.ago.to_date %> </button>
-  <br><br>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Past pairs
+  </div>
+  <div class="panel-body">
+    <% if @past_pairs && @past_pairs.length > 0 %>
+      <table class="table table-striped">
+        <tr>
+          <th>Pair Name</th>
+          <th>Pair At</th>
+        </tr>
+        <% @past_pairs.each do |past_pair| %>
+          <tr>
+            <td>
+              <%= past_pair.name %>
+            </td>
+            <td>
+              <%= past_pair.pair_at.to_date %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+    <% end %>
+  </div>
+</div>
