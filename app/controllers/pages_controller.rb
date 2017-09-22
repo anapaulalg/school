@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
 
   def home
+    if(current_user.profile.occupation == 'admin')
+      return redirect_to admin_index_path
+    end
+
     @profile = current_user.profile
     @count_rows = Profile.where(occupation: "student").count
     @check = Pair.count
@@ -30,6 +34,13 @@ class PagesController < ApplicationController
       end
     end
 
+    @student_id = Pair.where(user_id: @profile.id, pair_at: Time.now.strftime("%Y-%m-%d")).first
+    if @student_id.nil?
+      @student_id = Pair.where(pair_user_id: @profile.id, pair_at: Time.now.strftime("%Y-%m-%d")).first
+      @student = Profile.where(id: @student_id.user_id).first
+    else
+      @student = Profile.where(id: @student_id.pair_user_id).first
+    end
 
   end #method
 
