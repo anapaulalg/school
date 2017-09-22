@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
 
   def home
+    if(current_user.profile.occupation == 'admin')
+      return redirect_to admin_index_path
+    end
     @profile = current_user.profile
     @count_rows = Profile.where(occupation: "student").count
     @check = Pair.count
