@@ -9,22 +9,18 @@
 
 <div class="panel panel-success">
   <div class="panel-heading">
-    Unassigned students today
+    All the students
   </div>
   <div class="panel-body">
-      <% if @profiles && @profiles.length > 0 %>
-        <ul>
+    <table class="table table-striped">
+
         <% @profiles.each do |profile| %>
-          <% if profile.id != @student.id %>
-            <li>
-              <%= profile.first_name %> <%= profile.last_name %>
-            </li>
-          <% end %>
+        <tr>
+          <td><%= profile.first_name %></td>
+        </tr>
         <% end %>
-        </ul>
-      <% else %>
-        No unassigned students to display
-      <% end %>
+
+    </table>
   </div>
 </div>
 
@@ -33,24 +29,34 @@
     Past pairs
   </div>
   <div class="panel-body">
-    <% if @past_pairs && @past_pairs.length > 0 %>
+    <% if @check > 0 && !@past_days.blank? %>
       <table class="table table-striped">
         <tr>
           <th>Pair Name</th>
           <th>Pair At</th>
         </tr>
-        <% @past_pairs.each do |past_pair| %>
+
+    <% @past_days.each do |pair| %>
           <tr>
             <td>
-              <%= past_pair.name %>
+              <%=
+                if pair.pair_user_id != @profile.id
+                  Profile.find(pair.pair_user_id).first_name
+                else
+                  Profile.find(pair.user_id).first_name
+                end
+              %>
             </td>
             <td>
-              <%= past_pair.pair_at.to_date %>
+              <%= pair.pair_at %>
             </td>
           </tr>
-        <% end %>
-      </table>
-    <% else %>
+
+
+
     <% end %>
+    </table>
+    <% end %>
+
   </div>
 </div>
