@@ -22,4 +22,4 @@ profile6 = Profile.create!( { first_name: "Anika", last_name: "Anki", occupation
 profile7 = Profile.create!( { first_name: "Hendrik", last_name: "Bonifacius", occupation: "admin", user_id: user7.id, active: false} )
 profile8 = Profile.create!( { first_name: "Mat", last_name: "Ni", occupation: "admin", user_id: user8.id, active: false} )
 profile9 = Profile.create!( { first_name: "Ana Paula", last_name: "Lasmar Guimaraes", occupation: "student", user_id: user9.id, active: true} )
-profile10 = Profile.create!( { first_name: "Matthijs", last_name: "Mandjes", occupation: "student", user_id: user10s.id, active: true} )
+profile10 = Profile.create!( { first_name: "Matthijs", last_name: "Mandjes", occupation: "student", user_id: user10.id, active: true} )
