@@ -1,24 +1,28 @@
-# README
+# School
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was made in pairs and was part of our learning in Codaisseur.
+It was wrote in Ruby on Rails.
 
-Things you may want to cover:
+This program allows to the admin: see the list of students, the pairs of students for today and the future pairs. Beyond this, the admin can change the status of admin and students in the List of Users.
 
-* Ruby version
+The students can see their pair for today and the past pairs.
 
-* System dependencies
+# Running application
 
-* Configuration
+To run this app, clone the repository and type in the terminal:
 
-* Database creation
+```rails db:create db:migrate db:seed```
 
-* Database initialization
+```rails s```
 
-* How to run the test suite
+Visit http://localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
+# Preview
 
-* Deployment instructions
+![alt text](http://res.cloudinary.com/djxmmaqyo/image/upload/v1510241817/Screenshot_from_2017-11-09_16-25-33_uyauj5.png)
 
-* ...
+![alt text](http://res.cloudinary.com/djxmmaqyo/image/upload/v1510241817/Screenshot_from_2017-11-09_16-24-58_jhxmjm.png)
+
+![alt text](http://res.cloudinary.com/djxmmaqyo/image/upload/v1510241817/Screenshot_from_2017-11-09_16-25-14_v9dpsw.png)
+
+![alt text](http://res.cloudinary.com/djxmmaqyo/image/upload/v1510241817/Screenshot_from_2017-11-09_16-26-03_tdykpi.png)
